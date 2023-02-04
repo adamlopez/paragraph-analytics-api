@@ -26,6 +26,15 @@ def get_word_frequency():
     response = parser.get_word_frequency()
     return response
 
+@app.route('/word_count',methods=['GET'])
+def get_word_count():        
+    paragraph,code = handle_paragraph()
+    if code != 200:
+        return paragraph,code
+    parser  = ParagraphParser(paragraph)
+    response = parser.get_word_count()
+    return str(response)
+
   
 if __name__ == '__main__':
    app.run(host='0.0.0.0', port=8000,debug = True)
