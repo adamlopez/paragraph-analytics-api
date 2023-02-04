@@ -47,7 +47,6 @@ def test_word_count_uppercase_lowercase():
     assert word_freq == {'a': 2, 'is':2, 'test': 3,'this': 2}
 
 
-
 def test_init_character_array():
     paragraph =  ' this is a test 4 '
     parser = ParagraphParser(paragraph)
