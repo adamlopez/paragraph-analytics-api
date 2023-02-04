@@ -26,6 +26,7 @@ def get_word_frequency():
     response = parser.get_word_frequency()
     return response
 
+
 @app.route('/word_count',methods=['GET'])
 def get_word_count():        
     paragraph,code = handle_paragraph()
@@ -35,6 +36,24 @@ def get_word_count():
     response = parser.get_word_count()
     return str(response)
 
-  
+
+@app.route('/character_count',methods=['GET'])
+def get_character_count():        
+    paragraph,code = handle_paragraph()
+    if code != 200:
+        return paragraph,code
+    try:
+        exclude_spaces = request.args.get('exclude_spaces', default=False, type=lambda v: v.lower() == 'true')
+    except: 
+        message = """
+            Error parsing exclude_spaces value from the request parameters.
+        """
+        return message, 400
+    parser  = ParagraphParser(paragraph)
+    to_exclude = {' '} if exclude_spaces is True else set()
+    response = parser.get_character_count(exclude=to_exclude)
+    return str(response)
+
+
 if __name__ == '__main__':
    app.run(host='0.0.0.0', port=8000,debug = True)
