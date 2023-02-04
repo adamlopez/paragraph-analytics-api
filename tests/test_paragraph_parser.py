@@ -38,6 +38,16 @@ def test_word_count_with_numbers():
     word_freq = parser.get_word_frequency()
     assert word_freq == {'123': 1, '4':2, 'a': 1,'is': 1,'test':1,'this': 4}
 
+
+def test_word_count_uppercase_lowercase():
+    paragraph =  'this is a test. This is a test. Test.'
+    parser = ParagraphParser(paragraph)
+    word_freq = parser.get_word_frequency()
+    print(word_freq)
+    assert word_freq == {'a': 2, 'is':2, 'test': 3,'this': 2}
+
+
+
 def test_init_character_array():
     paragraph =  ' this is a test 4 '
     parser = ParagraphParser(paragraph)

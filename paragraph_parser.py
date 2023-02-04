@@ -16,10 +16,14 @@ class ParagraphParser:
     def _get_all_valid_words(self, paragraph: str) -> List[str]:
         words = paragraph.split()
         valid_words = []
+
+        # strip punctuation from start and end of words
+        words = [w.strip(string.punctuation) for w in words]
+        
         for word in words:
             chars = [c for c in word]
-            if all([c in self.alphanumeric_characters for c in chars]):
-                valid_words.append(word)
+            if chars and all([c in self.alphanumeric_characters for c in chars]):
+                valid_words.append(word.lower())
         return valid_words
 
 
@@ -27,7 +31,7 @@ class ParagraphParser:
         return [char_ for char_ in paragraph if char_ in self.alphanumeric_characters]
 
 
-    def get_word_frequency(self) -> defaultdict[str,int]:
+    def get_word_frequency(self) -> Dict[str,int]:
         """count the repetition of each word (alphanumeric). 
         the characters array should contain only English words and numbers 
         and they should be alphabetically ordered 
@@ -35,7 +39,6 @@ class ParagraphParser:
         word_freq = defaultdict(lambda :0)
         for token in self.tokenized_paragraph:
             word_freq[token] += 1
-            print(word_freq)
         return dict(sorted(word_freq.items()))
 
 
