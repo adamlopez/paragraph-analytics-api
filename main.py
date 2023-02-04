@@ -1,15 +1,19 @@
+from flask import Flask, request
+from paragraph_parser import ParagraphParser
+import json
 
-from flask import Flask , redirect , url_for , request # Importing the class flask
-# app is the object or instance of Flask
 app = Flask(__name__)
-# app.route informs Flask about the URL to be used by function
-@app.route('/api/parse_paragraph',methods=['GET'])
-def parse_paragraph():
+
+
+@app.route('/word_frequency',methods=['GET'])
+def get_word_frequency():
     if request.method == 'GET':
-        data = request.data 
-        print(data)
-        
-        return 'ok'
+        data = json.loads(request.data)
+        paragraph = data['paragraph']
+        parser  = ParagraphParser(paragraph)
+        response = parser.get_word_frequency()
+        print(response)
+        return response
 
   
 if __name__ == '__main__':
