@@ -1,0 +1,153 @@
+{
+	"info": {
+		"_postman_id": "8d267f68-5979-4475-9d7f-e31e0d27657b",
+		"name": "paragraph analytics",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "200_word_frequency",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\"paragraph\": \"The quick brown fox jumps over the lazy dog\"\n}"
+				},
+				"url": "http://localhost:8000/word_frequency"
+			},
+			"response": []
+		},
+		{
+			"name": "200_word_frequency_multisentence",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\"paragraph\": \"The quick brown fox jumps over the lazy dog. A second sentence here. And 1 last 1, with an oxford comma AND CAPITALIZATION!!\"\n}"
+				},
+				"url": "http://localhost:8000/word_frequency"
+			},
+			"response": []
+		},
+		{
+			"name": "400_word_frequency",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\"wrong_key\": \"The quick brown fox jumps over the lazy dog\"\n}"
+				},
+				"url": "http://localhost:8000/word_frequency"
+			},
+			"response": []
+		},
+		{
+			"name": "200_word_count",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\"paragraph\": \"The quick brown fox jumps over the lazy dog\"\n}"
+				},
+				"url": "http://localhost:8000/word_count"
+			},
+			"response": []
+		},
+		{
+			"name": "200_character_count_default",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\"paragraph\": \"The quick brown fox jumps over the lazy dog\"\n}"
+				},
+				"url": "http://localhost:8000/character_count"
+			},
+			"response": []
+		},
+		{
+			"name": "200_character_count_exclude_spaces",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\"paragraph\": \"The quick brown fox jumps over the lazy dog\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8000/character_count?exclude_spaces=true",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"character_count"
+					],
+					"query": [
+						{
+							"key": "exclude_spaces",
+							"value": "true"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "200_character_count_include_spaces",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\"paragraph\": \"The quick brown fox jumps over the lazy dog\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8000/character_count?exclude_spaces=false",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"character_count"
+					],
+					"query": [
+						{
+							"key": "exclude_spaces",
+							"value": "false"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
