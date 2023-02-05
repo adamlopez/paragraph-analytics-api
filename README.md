@@ -20,6 +20,11 @@ Flask Web API that returns various summary statistics about some text.
 > | `200`         | `application/json`        | lexicographically sorted frequency map of all words in the paragraph. |
 > | `400`         | `text/html;charset=UTF-8` |Error parsing paragraph from request body. body should be of the form:`{"paragraph": "your_paragraph_here"}`|
 
+##### Example cURL
+```javascript
+curl --request GET http://localhost:8000/word_frequency --header 'Content-Type: text/plain' --data-raw '{"paragraph": "The quick brown fox jumps over the lazy dog. A second sentence here!"}'
+ ```
+
 </details>
 
 <details>
@@ -38,6 +43,11 @@ Flask Web API that returns various summary statistics about some text.
 > |---------------|-----------------------------------|---------------------------------------------------------------------|
 > | `200`         | `text/html;charset=UTF-8`        | number of words in the paragraph. |
 > | `400`         | `text/html;charset=UTF-8 |Error parsing paragraph from request body. body should be of the form:`{"paragraph": "your_paragraph_here"}`|
+
+##### Example cURL
+```javascript
+curl --request GET http://localhost:8000/word_count --header 'Content-Type: text/plain' --data-raw '{"paragraph": "The quick brown fox jumps over the lazy dog. A second sentence here!"}'
+ ```
 
 </details>
 
@@ -65,6 +75,11 @@ Flask Web API that returns various summary statistics about some text.
 > | `200`         | `text/html; charset=utf-8`        |  Number of alphanumeric or punctuation characters in the paragraph. |
 > | `400`         | `text/html;charset=UTF-8` |Error parsing paragraph from request body. body should be of the form:`{"paragraph": "your_paragraph_here"}`|
 > | `400`         | `text/html;charset=UTF-8`|Error parsing `exclude_spaces` value from the request parameters.|
+
+##### Example cURL
+```javascript
+curl --request GET 'http://localhost:8000/character_count' --header 'Content-Type: text/plain' --data-raw '{"paragraph": "The quick brown fox jumps over the lazy dog.asasdad! A second sentence here!"}'
+ ```
 
 </details>
 
