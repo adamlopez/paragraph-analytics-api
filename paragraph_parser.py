@@ -28,7 +28,11 @@ class ParagraphParser:
 
 
     def _get_all_valid_characters(self,paragraph: str) -> List[str]:
-        return [char_ for char_ in paragraph if char_ in self.alphanumeric_characters]
+        return [
+            char_ for char_ in paragraph 
+            if char_ in self.alphanumeric_characters 
+            or char_ in string.punctuation
+        ]
 
 
     def get_word_frequency(self) -> Dict[str,int]:

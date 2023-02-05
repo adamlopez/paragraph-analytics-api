@@ -58,10 +58,16 @@ def test_get_character_count():
     parser = ParagraphParser(paragraph)
     assert parser.get_character_count() == 18
 
-def test_get_character_count_no_spaces():
+def test_get_character_count_exclude_spaces():
     paragraph =  ' this is a test 4 '
     parser = ParagraphParser(paragraph)
     assert parser.get_character_count(exclude={' '}) == 12
+
+
+def test_get_character_count_punctuation():
+    paragraph =  ' this is a test. This is also a test!'
+    parser = ParagraphParser(paragraph)
+    assert parser.get_character_count() == 37
 
 def  test_get_word_count():
     paragraph =  'this is a test 4 '
